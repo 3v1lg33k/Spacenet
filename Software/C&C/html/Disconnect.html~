@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title>Disconnected</title>
+		<link rel="icon" 
+      type="image/png" 
+      href="/static/images/icon.png">
+      <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  
+  </head>
+
+  <body>
+  <form>
+    <div class="row" id="loginForm">
+      <img src="/static/images/logo_spn.png" alt="logo" height="100" width="200">
+      <a href="./login" style="margin:auto;font-size:22px;">Click here to login</a>
+</div>
+       
+</form>
+
+
+
+
+  </body>
+
+</html>

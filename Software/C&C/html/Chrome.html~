@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>{{botid}}</title>
+	<link rel="icon" 
+      type="image/png" 
+	  href="/static/images/icon.png">
+	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  </head>
+ 
+
+
+<body>
+	<div class="cp_container">
+
+		<ul class="cp_bots_fx_ul">
+		  <li class="cp_li"><a href="/cnc" style="all:unset;"><img src="/static/images/logo_spn.png" alt="logo" class="cp_logo"></a></li>
+		  <li class="cp_li" style="float:right"><a href="../disconnect">Logout</a></li>
+		</ul>
+	
+		<ul class="cp_ul1_fx" >
+		  <li class="cp_li1"><a href="/cnc">Overview</a></li>
+		  <li class="cp_li1"><a class="active" href="list">Bots</a></li>
+		  <li class="cp_li1"><a href="ossummary">Os</a></li>
+		  <li class="cp_li1"><a href="dbpass">Database</a></li>
+		  <li class="cp_li1"><a href="account">Account</a></li>
+		  <br><hr><br>
+		  <li class="cp_li1"><a href="getcache?botid={{botid}}">Grabbed forms</a></li>
+		  <li class="cp_li1"><a class="active" href="chrome?botid={{botid}}">Chrome data</a></li>
+		  <li class="cp_li1"><a href="keylogger?botid={{botid}}">Keylogger</a></li>
+		  <li class="cp_li1"><a href="screens">Screenshots</a></li>
+		</ul>
+	
+		<div class="cp_body" style="margin-top:4.9%;">
+			<p class="cp_title">Chrome Data</p>
+			<hr><br/>
+
+	<h2 class="div_chrome_title"><u>Keywords searched</u></h2>
+	<div class="div_chrome">
+		{{KRC}}
+	</div>
+	<h2 class="div_chrome_title" style=" margin-top:50px;"><u>History</u></h2>
+	<div class="div_chrome">
+		{{HIC}}
+	</div>
+	<h2 class="div_chrome_title" style=" margin-top:50px;"><u>Autofill fields</u></h2>
+	<div class="div_chrome">
+		{{AFC}}
+	</div>
+
+
+  </body>
+</html>

